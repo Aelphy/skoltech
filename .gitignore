@@ -1,0 +1,12 @@
+*.log
+*.DS_Store
+*.aux
+/*/.settings/*
+/*/Debug/*
+/*/.cproject
+/*/.project
+/**/*.out
+/**/*.gz
+/**/.idea/*
+/**/*.pyc
+/sna/lab3/data.txt

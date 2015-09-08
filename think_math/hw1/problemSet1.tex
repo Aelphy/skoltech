@@ -1,0 +1,173 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\textwidth=431pt
+\textheight=600pt
+\hoffset=-30pt
+\voffset=-30pt
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\makeatletter
+\renewcommand{\@oddhead}{%
+	\vbox{%
+		\hbox to \textwidth{\strut \textit{Think Math, Problem set 1, Usvyatsov Mikhail} \hfill }
+		%\hbox to\textwidth{Лист\hfill Страница~\arabic{page}~из 2}
+		\hrule
+		\vspace{12pt}
+	}}
+	\renewcommand{\@oddfoot}{}
+	\makeatother
+	
+	
+\begin{document}
+	\begin{center}
+		\textbf{Problem set 1 \\
+			DUE: Tue. September 8, 2015 \\}
+	\end{center}
+		
+	\bigskip
+	
+	\textbf{Problem 1}		
+		
+	We know that all the polynoms complex roots have pairs, thus P(x) has a pair for $x_1= 1 - i\sqrt{7}$, that is $X_2 = 1 +  i\sqrt{7}$\\
+	Also due to fundamental theorem of algebra P(x) = $(x - x_1)(x - x_2)(x - x_3)$. As far as we know $x_1$ and $x_2$ we can multiply them and get that P(x) = $(x^2 - 2x + 8)(x - x_3)$.\\
+	Hence $x^3 - 2x^2 + 8x - x^2x_3 + 2xx_3 - 8x_3 =  -24+14x - 5x^2 +x^3$.\\
+	$-8x_3 =  - 24$\\
+	$x_3 = 3$
+	
+	\textbf{Problem 2}
+	
+	$x^3 - 2x^2 + 2x -1 = 0$\\
+	In a nightmare I have found that $x_1$ = 1 is a solution of equation above. We can easily prove it: 1 - 2 + 2 - 1 = 0\\
+	Then we can divide initial polynom by (x - 1) and according to fundamental theorem of algebra  we will have $(x - x_3)(x - x_2)$\\
+	$(x - x_3)(x - x_2) = x^2 - x + 1$\\
+	Thus $x_{2,3} = \dfrac{1 \pm i \sqrt{3}}{2}$
+	
+	\textbf{Problem 3}
+	
+	$x^3 - x^2 + \dfrac{x}{3} - \dfrac{1}{27} = 0$\\
+	Lama in the hat had come to me and told that $x_1 = \dfrac{1}{3}$ is a root of previous equation.
+	Then we can divide initial polynom by (x - $\dfrac{1}{3}$) and according to fundamental theorem of algebra  we will have $(x - x_3)(x - x_2)$\\
+	$(x - x_3)(x - x_2) = x^2 - \dfrac{2}{3}x + \dfrac{1}{9} = (3x - 1)^2$\\
+	Thus $x_{2,3} = x_1= \dfrac{1}{3}$
+	
+	\textbf{Problem 4}
+	
+	We know that geometry progression sum is $\dfrac{b_1(1 - q^n)}{1 - q}$.\\
+	So, we can rewrite initial equation in another form:\\
+	$\dfrac{1 - z^{2015}}{1 - z} = 0$\\
+	We can check that z = 0 is not a root if the equation and thus we can multiply this equation by (1 - z) and so $1 - z^{2015} = 0$.\\
+	$cos(2015\phi) + i sin(2015\phi) = 1$\\
+	Defining $\phi = \dfrac{2\pi k}{2015}$, where $k \in N$\\
+    z = $cos \phi + i sin \phi$ is a root of initial equation
+    
+    \textbf{Problem 5}
+    
+    P(x) = $x^3 - 2^{-\dfrac{2}{3}}zx + 1$.\\
+    This polynom has 3 roots. It means that we can rewrite it in the following form.\\
+    P(x) = $(x - x_1)(x - x_2)^2$\\
+    We can do it because $x_2 = x_3$.\\
+    Thus, opening brackets in a new form of our polynom we get:\\ 
+    P(x) = $x^3 - x^2(2x_2 + x_1) + x(x_2^2 + 2x_1x_2) - x_1x_2^2$\\
+    From initial form and a new one we can get a system:\\
+    \begin{equation*}
+	    \begin{cases}
+		    x_1x_2^2 = 1\\
+		    2x_2+x_1 = 0\\
+		    x_2^2+2x_1x_2 = -2^{-\dfrac{2}{3}}z
+	    \end{cases}
+    \end{equation*}
+    From this system we can get that:\\
+    \begin{equation*}
+	    \begin{cases}
+		    x_1 = - 2x_2\\
+		    x_2^3 =-\dfrac{1}{2}\\
+		    z = \dfrac{x_2^2+2x_1x_2}{-2^{-\dfrac{2}{3}}}
+	    \end{cases}
+    \end{equation*}
+    Hence:
+    \begin{equation*}
+	    \begin{cases}
+		    x_1 = - 2x_2\\
+		    x_2^3 =-\dfrac{1}{2}\\
+		    z = 2^{-\dfrac{2}{3}} \cdot 3x_2^2 
+	    \end{cases}
+    \end{equation*}
+    From this system we can get that: z should be equal to -3.
+    
+    \textbf{Problem 6}
+    
+    cosh(x) = $\dfrac{e^x + e^{-x}}{2}$\\
+    $cosh(log(x + \sqrt{x^2 - 1})) = \dfrac{e^{log(x + \sqrt{x^2 - 1})} + e^{-log(x + \sqrt{x^2 - 1})}}{2}$\\
+    Assuming that logarithm base is уб we can derive that initial function is equal to:
+    $\dfrac{x + \sqrt{x^2 - 1} + \dfrac{1}{x + \sqrt{x^2 - 1}}}{2}=x$
+    
+    \textbf{Problem 7}
+    
+    $sinh(x) = \dfrac{e^x - e^{-x}}{2}$\\
+    $cosh^2(t) - sinh^2(t) = 1$\\
+    By definition of hyperbolic functions:\\
+    $cosh^2(t) - sinh^2(t) = \dfrac{(e^t + e^{-t})^2 - (e^t - e^{-t})^2}{4} = \dfrac{e^{2t} + 2 + e^{-2t} - e^{2t}+2-e^{-2t}}{4} = 1$\\
+    Nothing will change for any t because it doesn't depend on it.
+    
+    \textbf{Problem 8}
+    
+    Using L'Hopital's rule several times we can find that:\\
+    $\lim_{x \to 0} \dfrac{i sin(-ix) + sin(x) - 2x}{log(1 + x^5)} = \lim_{x \to 0} \dfrac{(cos(ix) + cos(x) - 2)(1 + x^5)}{5x^4} =$\\
+    $\lim_{x \to 0} \dfrac{(cos(ix) + cos(x) - 2)\cdot 5x^4 + (-isin(ix) - sin(x))(1 + x^5)}{20x^3}=$\\
+    $\lim_{x \to 0} \dfrac{(cos(ix) + cos(x) - 2)\cdot 20x^3 + (-isin(ix) - sin(x))\cdot 5x^4 +}{}\\ \dfrac{+ (-isin(ix) - sin(x))\cdot 5x^4 + (cos(ix) - cos(x))(1 + x^5)}{60x^2}=$\\   
+    $\lim_{x \to 0} \dfrac{(cos(ix) + cos(x) - 2)\cdot 60x^2 + (-isin(ix) - sin(x))\cdot 20x^3 + (-isin(ix) - sin(x))\cdot 40x^3 + }{}\\
+    \dfrac{+ (cos(ix) - cos(x))\cdot 10x^4 + (cos(ix) - cos(x))\cdot 5x^4 + (-isin(ix) + sin(x))(1 + x^5)}{120x}$ = \\
+    $\lim_{x \to 0} \dfrac{(cos(ix) + cos(x) - 2)\cdot 120x + (-isin(ix) - sin(x))\cdot 60x^2 + (-isin(ix) - sin(x))\cdot 180x^3}{}\\ \dfrac{ + (cos(ix) - cos(x))\cdot 60x^3 + (cos(ix) - cos(x))\cdot 60x^3 + (-isin(ix) + sin(x))\cdot 15x^4 +}{}\\ \dfrac{ + (-isin(ix) + sin(x))\cdot 5x^4 + (cos(ix) + cos(x))(1 + x^5)}{120} = \dfrac{2}{120} = \dfrac{1}{60}$\\ 
+    
+    \textbf{Problem 9}
+    
+    By definition of cosh we can derive that:\\
+    cosh(in arccos(x)) = $\dfrac{e^{in \cdot arccos(x)} + e^{-in \cdot arccos(x)} }{2}$\\
+    According to Euler's formula:\\
+	$\dfrac{e^{in \cdot arccos(x)} + e^{-in \cdot arccos(x)} }{2} = \dfrac{cos(n\cdot arccos(x)) + i sin(n\cdot arccos(x)) +}{}\\ \dfrac{+ cos(n\cdot arccos(x)) -  i sin(n\cdot arccos(x))}{2} = cos(n\cdot arccos(x))$\\
+	When n = 0:\\
+	$cos(n\cdot arccos(x) = cos(0) = 1$\\
+	When n = 1:\\
+	$cos(n\cdot arccos(x) = cos(arccos(x) = x$\\
+	When n = 2:\\
+	$cos(n\cdot arccos(x) = cos(2\cdot arccos(x) = 2cos^2(arccos(x)) - 1 = 2x^2 - 1$\\
+	When n = 3:\\
+	$cos(n\cdot arccos(x) = cos(3\cdot arccos(x) = 4cos^3(arccos(x)) - 3 cos(arccos(x)) = 4x^3 - 3x$\\
+ 
+    \textbf{Problem 10}\\
+    z = a + ib\\
+    w = с + id\\
+    |z-w| = $\sqrt{(a-c)^2 + (b-d)^2}$\\
+    |z| = $\sqrt{a^2 + b^2}$\\
+    |w| = $\sqrt{c^2 + d^2}$\\
+    ||z| - |w|| = $|\sqrt{a^2 + b^2} - \sqrt{c^2 + d^2}|$\\
+    Now we can rewrite :
+    $ |z-w| \geq ||z| - |w|| $\\
+    as:\\
+    $\sqrt{(a-c)^2 + (b-d)^2} \geq | \sqrt{a^2 + b^2} - \sqrt{c^2 + d^2	}|$\\
+    $a^2 + b^2 +c^2 +d^2 - 2ac - 2bd \geq a^2 + b^2 + c^2 +d^2 - 2\sqrt{(a^2 + b^2)(c^2 + d^2)}$\\
+    $ \sqrt{(a^2 + b^2)(c^2 + d^2)} \geq  ac + bd $\\
+    $ (a^2 + b^2)(c^2 + d^2) \geq  (ac)^2 + (bd)^2 + 2(ac)(bd) $\\
+    $ (ac)^2 + (ad)^2 + (bc)^2 + (bd)^2 \geq  (ac)^2 + (bd)^2 + 2(ac)(bd) $\\
+    $ (ad)^2 + (bc)^2 \geq  2(ac)(bd) $\\
+    $ \dfrac{(ad)^2 + (bc)^2}{2} \geq  \sqrt{(ac)^2(bd)^2} $\\
+    The last equality always holds, QED.
+    
+    \textbf{Problem 11}\\
+    $\dfrac{\partial f}{\partial x_1} = \dfrac{\partial f_1}{\partial x_1} + i \dfrac{\partial f_2}{\partial x_1}$\\
+    $\dfrac{\partial f}{\partial x_2} = \dfrac{\partial f_1}{\partial x_2} + i \dfrac{\partial f_2}{\partial x_2}$\\
+    $\dfrac{\partial^2 f_1}{\partial x_1^2} + \dfrac{\partial^2 f_1}{\partial x_2^2}  = \dfrac{\partial}{\partial x_1} \left( \dfrac{\partial f_2}{\partial x_2} \right) - \dfrac{\partial}{\partial x_2} \left( \dfrac{\partial f_2}{\partial x_1} \right) = 0 $
+    
+    \textbf{Problem 12}
+    
+    $x\cdot e^{2\pi i} = x (cos(2\pi) + i sin(2 \pi)) = x$, QED.\\
+    Due to the fact, that $x\cdot e^{2\pi i} = x$, $log(x e^{2\pi i }) - log(x) = log(x) - log(x) = 0$
+\end{document}
