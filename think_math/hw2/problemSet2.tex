@@ -104,7 +104,7 @@
        	0
     \end{tabular} \right)_{min(m, n)}$.
     
-    Given matrices are obviously linear independent. Yes, they form a basis over Hermitian matrices two by two.
+    Given matrices are obviously linear independent. Yes, they form a basis over matrices two by two.
     
     $A = \left(
     \begin{tabular}{c c c c}
@@ -117,7 +117,7 @@
     
     \textbf{Problem 7}
     
-    Blue whale brought me on his tale the following scalar product  <C, D> = Tr($D^TC$). Occasionally it is well defined and according to this scalar product given basis is orthonormal. For the parametrized case we can introduce <C, D> = Tr($(DA)^TCA$). 
+    Blue whale brought me on his tale the following scalar product  <C, D> = Tr($D^TC$). Occasionally it is well defined and according to this scalar product given basis is orthonormal. For the parametrized case we can introduce <C, D> = $A^{-1}Tr((AD)^TAC$). 
     
     \textbf{Problem 8}
     
@@ -164,8 +164,40 @@
     \textbf{Problem 11}
     
     Finding the characteristic polynomial gives us: $\lambda^3 - 9 \lambda^2 - 6\lambda = 0$\\
-    Thus $\lambda_1 = 0$, $\lambda_{2,3} = \dfrac{9 \pm \sqrt{105}}{2}$
+    Thus $\lambda_1 = 0$, $\lambda_{2,3} = \dfrac{9 \pm \sqrt{105}}{2}$\\
+    For $\lambda = 0$ eigenvector is (1 -2 1$)^T$\\
+    For $\lambda = \dfrac{9 + \sqrt{105}}{2}$ eigenvector is $(\dfrac{\sqrt{105} - 5}{10}$ $\dfrac{\sqrt{105} + 5}{20}$ $1)^T$\\
+    For $\lambda = \dfrac{9 - \sqrt{105}}{2}$ eigenvector is $(\dfrac{-\sqrt{105} - 5}{10}$ $\dfrac{-\sqrt{105} + 5}{20}$ $1)^T$\\
+        
+    Thus  $A = \left(
+	    \begin{tabular}{c c c}
+		    1 & $\dfrac{\sqrt{105} - 5}{10}$ & $\dfrac{-\sqrt{105} - 5}{10}$ \\
+		    -2 &$\dfrac{\sqrt{105} + 5}{20}$ & $\dfrac{-\sqrt{105} + 5}{20}$ \\
+		    1 & 1 & 1
+	    \end{tabular}
+    \right)$.
+    
+    Now we can represent initial matrix as A D $A^{-1}$. Where D is diag$\left( 0 \right.$ $\dfrac{9 + \sqrt{5}} {2}$ $\left. \dfrac{9 - \sqrt{5}} {2} \right)$ 
+    
+    Given matrix cannot be a scalar product because it is not commutative for multiplication.
     
     \textbf{Problem 12}
+    For $M_1$:\\
+    $M = \left(
+	    \begin{tabular}{c c}
+		    1 &  0\\
+		    0 & -1
+	    \end{tabular}
+    \right)$.
     
+     $A = \left(
+	     \begin{tabular}{c c}
+		     1 & 1\\
+		     1 & -1
+	     \end{tabular}
+     \right)$.
+     
+     For $M_2$:\\
+
+	Its eigenvectors are zero and so it is impossible to diagonalize it.
 \end{document}

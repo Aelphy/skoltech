@@ -13,7 +13,7 @@ void detectAndDisplay( Mat frame );
 
 /** Global variables */
 String face_cascade_name = "haarcascades/haarcascade_frontalface_default.xml";
-String eyes_cascade_name = "haarcascades/haarcascade_righteye_2splits.xml";
+String eyes_cascade_name = "haarcascades/haarcascade_eye_tree_eyeglasses.xml";
 CascadeClassifier face_cascade;
 CascadeClassifier eyes_cascade;
 string window_name = "Capture - Face detection";
