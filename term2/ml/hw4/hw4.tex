@@ -1,0 +1,138 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\graphicspath{ {images/} }
+
+\textwidth=431pt
+\textheight=600pt
+\hoffset=-30pt
+\voffset=-30pt
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\makeatletter
+\renewcommand{\@oddhead}{
+	\vbox{
+		\hbox to \textwidth{\strut \textit{Think Math, Problem set 4, Usvyatsov Mikhail} \hfill }
+		\hrule
+		\vspace{12pt}
+	}
+}
+\renewcommand{\@oddfoot}{}
+\makeatother
+	
+	
+\begin{document}
+	\begin{center}
+		\textbf{Problem set 4\\ Usvyatsov Mikhail}
+	\end{center}
+		
+	\bigskip
+	
+	\textbf{Problem 1}
+	
+	\medskip
+	
+	We can rewrite the initial probel min the following form:
+	
+	$$\min_{\omega, \xi} \frac{1}{n} \xi e + \frac{1}{2C} \omega^T \omega$$
+	S.T. $$\phi(x) \omega^T - y \leq \xi + \varepsilon e$$
+		   $$\phi(x) \omega^T - y \geq - \xi - \varepsilon e$$
+		   $$\xi \geq 0$$
+		   
+	Where $e^T$ is (1, 1 ... 1$)^n $
+	
+	\textbf{Problem 2}
+	
+	\medskip
+	
+	Dual problem has the form:
+	
+	$$L(\xi, \omega, \lambda, \mu, \nu) = \frac{1}{n} \xi e + \frac{1}{2C} \omega^T \omega + \lambda^T(\phi(x) \omega^T - y - \xi - \varepsilon e) + \mu^T(y - \xi - \varepsilon e - \phi(x) \omega^T) - \nu^T \xi $$
+	
+	$$g(\lambda, \mu, \nu) = min_{\xi, \omega} L(\xi, \omega, \lambda, \mu, \nu)$$
+	
+	$$\frac{dL}{\partial \xi} = \frac{1}{n} e - \lambda - \mu - \nu$$
+	$$\frac{dL}{\partial \omega} = \frac{1}{C} \omega + \phi(x)(\lambda - \mu)$$
+	
+	The dual problem is: $$max_{\lambda, \mu, \nu} g(\lambda, \mu, \nu)$$
+	S.T $$\lambda, \mu, \nu \geq 0$$
+	$$\frac{dL}{\partial \xi} = 0$$
+	
+	We can rewrite this as:
+	
+	$$\omega =  C \phi(x)(\mu - \lambda)$$
+	$$max_{\lambda, \mu, \nu} \frac{1}{2} C (\phi(x)(\mu - \lambda))^T\phi(x)(\mu - \lambda) + (\lambda^T - \mu^T)\phi(x)C (\phi(x)(\mu - \lambda))^T - \lambda^T(y + \varepsilon e) + \mu^T(y - \varepsilon e)$$
+	S.T. $$\lambda, \mu, \nu \geq 0$$
+	$$\frac{1}{n} e - \lambda - \mu - \nu = 0$$
+	
+	After simplification we can get:
+	
+	$$\omega =  C \phi(x)(\mu - \lambda)$$
+	$$max_{\lambda, \mu, \nu} -\frac{1}{2} (\mu - \alpha) K(x, x) (\mu - \alpha) + y^T (\mu - \lambda) - \varepsilon e^T(\mu + \lambda)$$
+	S.T. $$\lambda, \mu \geq 0$$
+	$$\frac{1}{n} e - \lambda - \mu \leq 0$$
+	
+	Where $K(x, x) = \phi(x)^T \phi(x)$
+	
+	The dimansionality of the dual problem is 2n.
+	
+	\textbf{Problem 3}
+	
+	\medskip
+	
+	The prediction is defined by the following formula:
+	
+	$$\hat{y}(x_{new}) = C(\phi(x)(\mu - \lambda))^T\phi(x_{new}) = C (\mu^T - \lambda^T)\phi(x)^T \phi(x_{new}) = C (\mu^T - \lambda^T) K(x, x_{new})$$
+		
+	\textbf{Problem 4}
+	
+	\medskip
+	
+	We want the problem to be in the following form:
+	
+	$$min_{x} \frac{1}{2} x^T P x + q^T x$$
+	
+	S.T. $$Gx \leq h$$
+	
+	So we have to define the following:
+	
+	$$x = \left( \begin{matrix}
+				\lambda_{1}\\
+				\vdots\\
+				\lambda_n\\
+				\mu_1\\
+				\vdots\\
+				\mu_n
+			  \end{matrix} \right)$$
+			  
+	$$P = \left( \begin{matrix}
+				K & -K \\
+				-K & K
+       	      \end{matrix} \right)$$
+       	      
+    $$q = \left( \begin{matrix}
+			 y_1  + \varepsilon\\
+			 \vdots\\
+			 y_n + \varepsilon\\
+			 -y_1  + \varepsilon\\
+			 \vdots\\
+			 -y_n + \varepsilon\\
+	          \end{matrix} \right)$$
+	          
+	 $$G = \left( \begin{matrix}
+				 -I(n) & 0 \\
+				 0 & -I(n)\\
+				 I(n) & I(n)\\
+	            \end{matrix} \right)$$
+	            
+	 $$h = \left( \begin{matrix}
+			 	zeros((2n, 1))\\
+			 	\frac{C}{n} ones((n, 1))
+	     	 	\end{matrix} \right)$$
+	     	 	
+	 Due to the definition of Kernel function it is positive semidefinite. Thus P is also positive semidefinite.  
+\end{document}
