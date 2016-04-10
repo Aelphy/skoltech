@@ -1,0 +1,113 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\textwidth=431pt
+\textheight=600pt
+\hoffset=-30pt
+\voffset=-30pt
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\makeatletter
+\renewcommand{\@oddhead}{%
+	\vbox{%
+		\hbox to \textwidth{\strut \textit{Stohastic Modeling, Problem set 1, Usvyatsov Mikhail} \hfill }
+		\hrule
+		\vspace{12pt}
+	}}
+	\renewcommand{\@oddfoot}{}
+	\makeatother
+	
+	
+\begin{document}
+	\begin{center}
+		\textbf{Problem set 1 \\
+			DUE: April 20, 2016 \\}
+	\end{center}
+		
+	\bigskip
+	
+	\textbf{Problem 1}		
+	
+	\bigskip
+		
+	$	p(x) = \begin{cases}
+		A e^{-\lambda x}, x \geq 0\\
+		0, x < 0
+	\end{cases}
+	$ 
+	
+	We know that $$ \int_{-\infty}^{\infty} p(x) dx = 1 $$
+	
+	Hence $$ \int_{0}^{\infty} A e^{-\lambda x} dx = 1 $$
+	
+	$$ \int_{0}^{\infty} A e^{-\lambda x} dx = -\frac{1}{\lambda} A e^{-\lambda x} |_{0}^{\infty} = -\frac{1}{\lambda} A (e^{-\infty} - e^0) = \frac{1}{\lambda} A = 1 $$
+	
+	Thus $A = \lambda$ 
+	
+	$$ Ex = \int_{0}^{\infty} x A e^{-\lambda x} dx = A \int_{0}^{\infty} x e^{-\lambda x} dx = \% u = x, du = dx, dv = e^{-\lambda x}dx, v = -\frac{1}{\lambda} e^{-\lambda x} \% = $$
+	
+	$$ = A \left( -\frac{1}{\lambda} xe^{-\lambda x} |_{0}^{\infty} + \frac{1}{\lambda} \int_{0}^{\infty} e^{-\lambda x} dx \right) = A \frac{1}{\lambda} \int_{0}^{\infty} e^{-\lambda x} dx = - A \frac{1}{\lambda^2}(0 - 1) = A \frac{1}{\lambda^2} = \frac{1}{\lambda} $$
+	
+	$$ Var x = Ex^2 - (Ex)^2 $$
+	
+	$$ Ex^2 = \int_{0}^{\infty} x^2 A e^{-\lambda x} dx = \% u = x^2, du = 2xdx, dv = e^{-\lambda x}dx, v = -\frac{1}{\lambda} e^{-\lambda x} \% = $$
+	
+	$$ = A \left( - \frac{1}{\lambda} x^2 e^{-\lambda x} |_{0}^{\infty} + 2 \int_{0}^{\infty} x \frac{1}{\lambda} e^{-\lambda x} dx \right) = 2A\frac{1}{\lambda} \int_{0}^{\infty} x e^{-\lambda x} dx = \frac{2}{\lambda^2} $$
+	
+	Hence $Varx = \frac{1}{\lambda^2}$
+	
+	$$ G(k) = \lambda \int_{0}^{\infty} e^{(ik - \lambda) x} dx = \frac{\lambda}{ik - \lambda} = \left(1 - \frac{ik}{\lambda} \right)^{-1} $$
+	
+	$ \operatorname{E}[X^m] = \frac{1}{i^m} \frac{\partial ^m}{\partial k^m} G(k) |_{k = 0} $
+	
+	\newpage
+	
+	\textbf{Problem 2}
+	
+	\bigskip
+
+	According to CLT:
+	
+	$$ \frac{\sqrt{n} \left( \left( \frac{1}{n} \sum_{i = 1}^{n} x_i \right) - Ex \right)}{Stdx} \xrightarrow{d} N(0, 1) $$
+		
+	$$ Ex = \frac{1}{2} \cdot 0 + \frac{1}{3} \cdot 2 + \frac{1}{6} \cdot 26 = \frac{2}{3} + \frac{13}{3} = 5 $$
+	
+	$$ Std x = \sqrt{Var x}$$
+	
+	$$ Var x = Ex^2 - (Ex)^2 $$
+	
+	$$ Ex^2 = \frac{1}{2} \cdot 0 + \frac{1}{3} \cdot 4 + \frac{1}{6} \cdot 26^2 = \frac{4}{3} + \frac{13^2 \cdot 2}{3} = \frac{4 + 169 \cdot 2}{3} = 
+	114 $$
+	
+	$$ Varx = 114 - 25 = 89 $$
+	
+	$$ Stdx = \sqrt{89} \approx 9.43 $$
+	
+	$$ E \sum_{i = 1}^{n} x_i = n Ex = 500 $$
+	
+	Due to the fact that $x_i$ are independent:
+	$$ Var \sum_{i = 1}^{n} x_i = n Varx = 890 $$
+	
+	$$ Std \sum_{i = 1}^{n} x_i \approx 29.83 $$
+	
+	According to CLT:
+	
+	$$ \sum_{i = 1}^{n} x_i \xrightarrow{d} N(500, 890)$$
+	
+	Z-score is $\frac{200 - 500}{890} = - 0.34$
+	
+	$$ P \left( \sum_{i = 1}^{n} x_i  \geq 200 \right) = 1 - P \left( \sum_{i = 1}^{n} x_i  < 200 \right) = 1 - 0.3669 = 63.31 \% $$
+	
+	\newpage
+	
+	\textbf{Problem 2}
+	
+	\bigskip
+\end{document}
