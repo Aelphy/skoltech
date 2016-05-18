@@ -65,9 +65,15 @@
 	
 	$$ G(k) = \lambda \int_{0}^{\infty} e^{(ik - \lambda) x} dx = \frac{\lambda}{ik - \lambda} = \left(1 - \frac{ik}{\lambda} \right)^{-1} $$
 	
-	$ \operatorname{E}[X^m] = \frac{1}{i^m} \frac{\partial ^m}{\partial k^m} G(k) |_{k = 0} $
+	$$ \operatorname{E}[X^m] = \frac{1}{i^m} \frac{\partial ^m}{\partial k^m} G(k) |_{k = 0} $$
 	
-	\newpage
+	$$ E[X] = \left( 1 - \frac{ik}{\lambda} \right)^{-2} \frac{1}{\lambda} |_{k = 0} = \frac{1}{\lambda}$$
+	
+	$$ E[X^2] = 2\left( 1 - \frac{ik}{\lambda} \right)^{-3} \frac{1}{\lambda^2} |_{k = 0} = \frac{1}{\lambda^2}$$
+	
+	$$ E[X^m] = m!\left( 1 - \frac{ik}{\lambda} \right)^{-(m + 1)} \frac{1}{\lambda^m} |_{k = 0} = \frac{m!}{\lambda^m} $$
+	
+	\bigskip
 	
 	\textbf{Problem 2}
 	
@@ -105,9 +111,292 @@
 	
 	$$ P \left( \sum_{i = 1}^{n} x_i  \geq 200 \right) = 1 - P \left( \sum_{i = 1}^{n} x_i  < 200 \right) = 1 - 0.3669 = 63.31 \% $$
 	
-	\newpage
+	\bigskip
 	
-	\textbf{Problem 2}
+	\textbf{Problem 3}
 	
 	\bigskip
+	
+	According to recitations, for Z-chanel we have: 
+	
+	$$ p(y = 0 | x = 0) = 1 $$
+	$$ p(y = 1 | x = 0) = 0 $$
+	$$ p(y = 1 | x = 1) = 1 - f = 0.85 $$
+	$$ p(y = 0 | x = 1) = f = 0.15 $$
+	
+	We know, that $$ \sum_{j=1}^{n} P(y|x_j)P(x_j) $$
+	
+	Hence $$ P(y) = P(y | x = 0)P(x = 0) + P(y | x = 1)P(x = 1) = P(y | x = 0)0.9 + P(y | x = 1)0.1 $$
+	
+	P(x = 0) = 0.9
+	
+	P(x = 1) = 0.1
+	
+	So we can now compute:
+	
+	$P(y = 1) = 0.1(1 - f) = 0.1 - 0.1f = 0.1 - 0.1 \cdot 0.15 = 0.1 - 0.015 = 0.085 $
+	
+	$P(y = 0) = 0.9 + 0.1f = 0.9 + 0.1 \cdot 0.15 = 0.915$
+	
+	$$ P(x|y) = \frac{P(y|x)P(x)}{P(y)} $$
+	
+	Hence
+	
+	$$ P(x = 1 | y = 0) = \frac{0.1 f}{0.9 + 0.1f} = \frac{0.15}{0.915} = \frac{1}{61} \approx 0.016 $$
+	
+	$$I(X;Y) = S(Y) - S(Y|X) $$
+	
+	$$ S(Y) = -P(Y = 0) log(P(Y = 0)) - P(Y = 1) log(P(Y = 1)) = -0.915 log(0.915) - 0.085log(0.085) $$
+	$ S(Y|X) = - \sum_{i=1}^{n_x} P(x_i) \sum_{j=1}^{n_y} P(y_j|x_i)log(P(y_j|x_i)) = -P(x = 0) (P(y = 0 | x = 0)log(P(y = 0 | x = 0)) - P(y = 1 | x = 0)log(P(y = 1 | x = 0))) + P(x = 1) (P(y = 0 | x = 1)log(P(y = 0 | x = 1)) + P(y = 1 | x = 1)log(P(y = 1 | x = 1))) = - 0.1(0.15log(0.15) + 0.85log(0.85)) = -0.015log(0.15) - 0.085log(0.85) $
+	
+	Therefore
+	
+	$$ I(X;Y) = -0.915 log(0.915) - 0.085log(0.085) + 0.015log(0.15) + 0.085log(0.85) = $$
+	$$ =  log\left(\frac{0.15^{0.015} \cdot 0.85^{0.085}}{0.915^{0.915} \cdot 0.085^{0.085}}\right) \approx log(1.28) \approx 0.36 $$
+	
+	The capacity of the channel $ C(Q) = max_{P(x)} I(X;Y) $
+	
+	In general $I(X;Y) = S_{binary}(P(x = 1)(1 - f)) - P(x = 1)S_{binary}(y|x = 1) = S_{binary}(P(x = 1)(1 - f)) - P(x = 1)S_{binary}(f) $
+	
+	Now we can differentiate I(X;Y) with respect to p.
+	
+	$$ \frac{\partial I(X;Y)}{\partial p} = \frac{- p(1 - f) log_2(p(1 - f)) - (1-p(1 - f)) log_2(1 - p(1 - f)) }{\partial p} - S_{binary}(f) =  $$
+	
+	$ = \frac{f - 1}{ln(2)} \left( ln(p(1 - f)) + (1 - f)\frac{p}{p(1 - f)} \right)   + \frac{1}{ln(2)} \left( (1 - f)  ln(1 - p(1 - f)) + \frac{p(1 - f) - 1}{1 - p(1 - f)}(f - 1)  \right) - S_{binary}(f) = $
+	
+	$$ =  \frac{f - 1}{ln(2)} \left( ln(p(1 - f)) + 1 \right)   + \frac{1 - f}{ln(2)} \left( ln(1 - p(1 - f)) + 1  \right) - S_{binary}(f)  $$
+	
+	Now let's find optimum:
+	
+	$$  \frac{f - 1}{ln(2)} \left( ln(p(1 - f)) + 1 \right)   + \frac{1 - f}{ln(2)} \left( ln(1 - p(1 - f)) + 1  \right) - S_{binary}(f)  = 0 $$
+	
+	$$  ln(p(1 - f)) + 1 - ln(1 - p(1 - f)) - 1 = S_{binary}(f) \frac{ln(2)}{f - 1}  $$
+	
+	$$  ln(p(1 - f)) - ln(1 - p(1 - f)) = S_{binary}(f) \frac{ln(2)}{f - 1}  $$
+	
+	$$  ln\left( \frac{p(1 - f)}{1 - p(1 - f)} \right) = ln(2^{S_{binary}(f) (f - 1)})  $$
+	
+	$$   \frac{1}{p(1 - f)} - 1 = 2^{\frac{S_{binary}(f) }{1 - f}}  $$
+	
+	$$   p = \frac{1}{(1 - f)(2^{\frac{S_{binary}(f) }{1 - f}}  + 1)} $$
+	
+	Now we can find $$ C(Q) = S_{binary}(P(x = 1)(1 - f)) - P(x = 1)S_{binary}(f) | p = \frac{1}{(1 - f)(2^{\frac{S_{binary}(f) }{1 - f}}  + 1)} $$
+	
+	$$ C(Q) = S_{binary} \left( \frac{1}{2^{\frac{S_{binary}(f) }{1 - f}}  + 1} \right) - \frac{S_{binary}(f)}{(1 - f)(2^{\frac{S_{binary}(f) }{1 - f}}  + 1)}  $$
+	
+	$ C(Q) =  \left( \frac{1}{2^{\frac{S_{binary}(f) }{1 - f}}  + 1} \right) log_2 \left( 2^{\frac{S_{binary}(f) }{1 - f}}  + 1 \right) - \left( 1 - \frac{1}{2^{\frac{S_{binary}(f) }{1 - f}}  + 1} \right) log_2 \left( 1 - \frac{1}{2^{\frac{S_{binary}(f) }{1 - f}}  + 1}   \right)- \frac{S_{binary}(f)}{(1 - f)(2^{\frac{S_{binary}(f) }{1 - f}}  + 1)}  $
+	
+	$ C(Q) =  \left( \frac{1}{2^{\frac{S_{binary}(f) }{1 - f}}  + 1} \right) log_2 \left( 2^{\frac{S_{binary}(f) }{1 - f}}  + 1 \right) - \left( \frac{2^{\frac{S_{binary}(f) }{1 - f}} }{2^{\frac{S_{binary}(f) }{1 - f}}  + 1} \right) log_2 \left(  \frac{2^{\frac{S_{binary}(f) }{1 - f}} }{2^{\frac{S_{binary}(f) }{1 - f}}  + 1} \right)- \frac{S_{binary}(f)}{(1 - f)(2^{\frac{S_{binary}(f) }{1 - f}}  + 1)}  $
+	
+	$ C(Q) =  \left( \frac{1}{2^{\frac{S_{binary}(f) }{1 - f}}  + 1} \right) log_2 \left( 2^{\frac{S_{binary}(f) }{1 - f}}  + 1 \right) - \left( \frac{2^{\frac{S_{binary}(f) }{1 - f}} }{2^{\frac{S_{binary}(f) }{1 - f}}  + 1} \right) log_2 \left(  2^{\frac{S_{binary}(f) }{1 - f}}  \right) + \left( \frac{2^{\frac{S_{binary}(f) }{1 - f}} }{2^{\frac{S_{binary}(f) }{1 - f}}  + 1} \right)  log_2 \left(   2^{\frac{S_{binary}(f) }{1 - f}}  + 1 \right)- \frac{S_{binary}(f)}{(1 - f)(2^{\frac{S_{binary}(f) }{1 - f}}  + 1)}  $
+	
+	$ C(Q) = log_2 \left( 2^{\frac{S_{binary}(f) }{1 - f}}  + 1 \right) - \left( \frac{2^{\frac{S_{binary}(f) }{1 - f}} }{2^{\frac{S_{binary}(f) }{1 - f}}  + 1} \right) \frac{S_{binary}(f) }{1 - f}  - \frac{S_{binary}(f)}{(1 - f)(2^{\frac{S_{binary}(f) }{1 - f}}  + 1)}  $
+	
+	$$ C(Q) = log_2 \left( 2^{\frac{S_{binary}(f) }{1 - f}}  + 1 \right) - \frac{S_{binary}(f)}{1 - f}  $$
+	
+	$$ C(Q) = log_2 \left( 1 + 2^{-\frac{f}{1 - f} log_2(f) - log_2(1 - f)} \right) + \frac{f }{1 - f} log_2(f) + log_2(1 - f)  $$
+	
+	$$ C(Q) = log_2 \left( 1 + \frac{f ^ {\frac{f}{f - 1}} }{1 - f} \right) + \frac{f }{1 - f} log_2(f) + log_2(1 - f)  $$
+	
+	$$ C(Q) = log_2 \left( 1 - f + f ^ {\frac{f}{f - 1}} \right) + \frac{f }{1 - f} log_2(f)  $$
+	
+	$$ C(Q) = log_2 \left( f^{\frac{f}{1 - f}} - f^{\frac{1}{1 - f}} + 1 \right)  $$
+	
+	\bigskip
+	
+	\textbf{Problem 4}
+	
+	\bigskip
+	
+	$$ 
+	\left(
+	\begin{matrix}
+		      & GG & Gg & gg\\
+		GG & 0.5 & 0.25 & 0 \\
+		Gg & 0.5 & 0.5 & 0.5 \\
+		gg & 0  & 0.25 & 0.5 \\
+	\end{matrix}
+	\right)
+	$$
+	
+	MC is irreducible because there are no states that could become unreached from any state on any time step. Due to the fact, that MC contains self-loops it is aperiodic.
+	
+	Let us define the matrix P in a general form:
+	
+	$$
+	\left(
+	\begin{matrix}
+      & GG & Gg & gg\\
+      GG & p_{00} & p_{01} & p_{02} \\
+      Gg & p_{10} & p_{11} & p_{12} \\
+      gg & p_{20}  & p_{21} & p_{22} \\
+	\end{matrix}
+	\right)
+	$$
+	
+	$
+		\\
+		\mu_1(GG) = p_{01} = 0.25\\
+		\mu_1(Gg) = p_{11} = 0.5\\
+		\mu_1(gg) = p_{21} = 0.25
+	$
+	
+	$
+		\\
+		\mu_2(GG) = \mu_1(GG) p_{00} + \mu_1(Gg)p_{01} + \mu_1(gg)p_{02} = p_{01}p_{00} + p_{11}p_{01} = 0.25 \cdot 0.5 + 0.5 \cdot 0.25 = 0.25\\
+		\mu_2(Gg) = \mu_1(GG) p_{10} + \mu_1(Gg)p_{11} + \mu_1(gg)p_{12} = p_{01}p_{10} + p_{11}p_{11} + p_{21}p_{12} = 0.25 \cdot 0.5 + 0.25 + 0.5 \cdot 0.25 = 0.5\\
+		\mu_2(gg) = \mu_1(GG) p_{20} + \mu_1(Gg)p_{21} + \mu_1(gg)p_{22} = p_{11}p_{21} + p_{21}p_{22} = 0.5 \cdot 0.25 + 0.25 \cdot 0.5 = 0.25
+	$
+	
+	$
+		\\
+		\mu_3(GG) = \mu_2(GG) p_{00} + \mu_2(Gg)p_{01} + \mu_2(gg)p_{02} = 0.25 \cdot 0.5 + 0.25 \cdot 0.5 = 0.25\\
+		\mu_3(Gg) = \mu_2(GG) p_{10} + \mu_2(Gg)p_{11} + \mu_2(gg)p_{12}  = 0.25 \cdot 0.5 + 0.5 \cdot 0.5 + 0.25 \cdot 0.5 = 0.5\\
+		\mu_3(gg) = \mu_2(GG) p_{20} + \mu_2(Gg)p_{21} + \mu_2(gg)p_{22} = 0.5 \cdot 0.25 + 0.25 \cdot 0.5 = 0.25
+	$
+	
+	One can see that $\mu_n$ doesn't depend on n.
+	
+	$$ 
+	P_1 = 
+		\left(
+		\begin{matrix}
+		0.5 & 0.25 & 0 \\
+		0.5 & 0.5 & 0.5 \\
+		0  & 0.25 & 0.5 \\
+		\end{matrix}
+		\right)
+	$$
+	
+	$$ 
+		P^2 = 
+		\left(
+		\begin{matrix}
+		0.5 & 0.25 & 0 \\
+		0.5 & 0.5 & 0.5 \\
+		0  & 0.25 & 0.5 \\
+		\end{matrix}
+		\right)
+		\left(
+		\begin{matrix}
+		0.5 & 0.25 & 0 \\
+		0.5 & 0.5 & 0.5 \\
+		0  & 0.25 & 0.5 \\
+		\end{matrix}
+		\right)= \left(
+		\begin{matrix}
+		0.325 & 0.25 & 0.125 \\
+		0.5 & 0.5 & 0.5 \\
+		0.125  & 0.25 & 0.375 \\
+		\end{matrix}
+		\right)
+	$$
+	
+	$$ 
+	P^3 = 
+	\left(
+	\begin{matrix}
+	0.325 & 0.25 & 0.125 \\
+	0.5 & 0.5 & 0.5 \\
+	0.125  & 0.25 & 0.375 \\
+	\end{matrix}
+	\right)
+	\left(
+	\begin{matrix}
+	0.5 & 0.25 & 0 \\
+	0.5 & 0.5 & 0.5 \\
+	0  & 0.25 & 0.5 \\
+	\end{matrix}
+	\right)= \left(
+	\begin{matrix}
+	0.3125 & 0.25 & 0.1875 \\
+	0.5 & 0.5 & 0.5 \\
+	0.1875  & 0.25 & 0.3125\\
+	\end{matrix}
+	\right)
+	$$
+	
+	$$ 
+		P^n = 
+		\left(
+		\begin{matrix}
+		0.125\sum_{i = 0}^{n - 1}0.5^i + 0.5^{n + 1} & 0.25 & 0.5 - 0.125\sum_{i = 0}^{n - 1}0.5^i - 0.5^{n + 1}  \\
+		0.5 & 0.5 & 0.5 \\
+		0.5 - 0.125\sum_{i = 0}^{n - 1}0.5^i - 0.5^{n + 1}  & 0.25 & 0.125\sum_{i = 0}^{n - 1}0.5^i + 0.5^{n + 1} \\
+		\end{matrix}
+		\right)
+	$$
+	
+	$P\pi^* = \pi^*$
+	
+	$$
+	\left(
+	\begin{matrix}
+	0.5 & 0.25 & 0 \\
+	0.5 & 0.5 & 0.5 \\
+	0  & 0.25 & 0.5  \\
+	\end{matrix}
+	\right)
+	\left(
+	\begin{matrix}
+	x \\
+	y \\
+	z
+	\end{matrix}
+	\right) = \left(
+	\begin{matrix}
+	x \\
+	y \\
+	z
+	\end{matrix}
+	\right)
+	$$
+	
+	Hence:
+	
+	$$
+	\begin{cases}
+		0.5x + 0.25 y = x\\
+		0.5 x + 0.5 y + 0.5 z = y\\
+		0.25 y + 0.5z  = z
+	\end{cases}
+	$$
+	
+	$$x = 0.5 y$$
+	$$z = 0.5 y$$
+	$$0.25 y + 0.5y + 0.25 y = y$$
+	
+	So $\pi^*$ = $(0.5y, y, 0.5y)^T$
+	
+	We know, that $\sum_{i}\pi^* = 1$, so 2y = 1, hence y = 0.5.
+	
+	$\pi^*  = (0.25, 0.5, 0.25)^T$
+	
+	It is easy to see, that the detailed balance holds.
+	
+	\bigskip
+	
+	\textbf{Problem 5}
+	
+	\bigskip
+	
+	$\lambda = 10$
+	
+	$P(n \geq 20) = 1 - \sum_{i = 0}^{19}P(i, 1) $
+	
+	$P(n, t) = \frac{(\lambda t)^n}{n!} e^{-\lambda t} $
+	
+	Hence, $P(n \geq 20) \approx 0.34 \% $
+	
+	Due to the fact, that arrival follows the Poison law. We can find $\lambda_1 = (1 - p)\lambda$ that is woman arrival rate.
+	
+	Thus, 
+	$P(n = 10, 1) = \frac{(\lambda_1 t)^n}{n!} e^{-\lambda_1 t} = \frac{((1 - p)10)^{10}}{10!} e^{(p - 1)10} $, where n is amount of women came.
+	
+	For men we have $\lambda_2 = p\lambda$
+	
+	For the probability distribution of the inter-arrival time one obtains
+	$P(t) \approx p e^{-pt}$. So, expected inter-arrival time of men is $\frac{1}{p}$.
+	
+	$P(n = 0, 2) = e^{-20p}$, where n is amount of male customers
 \end{document}
